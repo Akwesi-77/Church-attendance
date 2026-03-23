@@ -313,9 +313,6 @@ function LoginScreen({ onLogin }) {
           {busy?"Signing in…":"Sign In →"}
         </button>
 
-        <div style={{ textAlign:"center", marginTop:20, fontSize:12, color:DIM, background:G3, borderRadius:8, padding:"8px 12px" }}>
-          Default login: <strong style={{color:G6}}>admin</strong> / <strong style={{color:G6}}>admin123</strong>
-        </div>
       </div>
     </div>
   );
