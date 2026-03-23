@@ -1,0 +1,527 @@
+=======================================================
+  CHURCH ATTENDANCE SYSTEM v5.0
+  Complete Windows Deployment Guide
+=======================================================
+
+WHAT YOU NEED BEFORE STARTING:
+  ✅ Supabase account (already done)
+  ⬜ Node.js installed
+  ⬜ Git installed
+  ⬜ GitHub account (free)
+  ⬜ Netlify account (free)
+
+=======================================================
+STEP 1 — INSTALL NODE.JS
+=======================================================
+
+1. Open your browser and go to:
+   https://nodejs.org
+
+2. Click the big green "LTS" button to download
+   (LTS = Long Term Support, the stable version)
+
+3. Open the downloaded file (it looks like node-v20.x.x-x64.msi)
+
+4. Click through the installer:
+   - Click Next
+   - Accept the license agreement → Next
+   - Keep the default install location → Next
+   - Keep all default features → Next
+   - Click Install
+   - Click Finish
+
+5. VERIFY IT WORKED:
+   - Press Windows key + R on your keyboard
+   - Type: cmd
+   - Press Enter (a black window opens)
+   - Type: node --version
+   - Press Enter
+   - You should see something like: v20.11.0  ✅
+   - Also type: npm --version
+   - You should see something like: 10.2.4  ✅
+
+   If you see an error, restart your computer and try again.
+
+
+=======================================================
+STEP 2 — INSTALL GIT
+=======================================================
+
+1. Go to: https://git-scm.com/downloads
+
+2. Click "Download for Windows"
+
+3. Open the downloaded file (Git-2.x.x-64-bit.exe)
+
+4. Click through the installer:
+   - Click Next on every screen
+   - Keep ALL default settings
+   - Click Install
+   - Click Finish
+
+5. VERIFY IT WORKED:
+   - Open Command Prompt (Windows key + R → type cmd → Enter)
+   - Type: git --version
+   - You should see: git version 2.x.x  ✅
+
+
+=======================================================
+STEP 3 — CREATE A GITHUB ACCOUNT
+=======================================================
+
+1. Go to: https://github.com
+
+2. Click "Sign up" (top right)
+
+3. Enter your email address → Continue
+
+4. Create a password → Continue
+
+5. Enter a username (e.g. gracechurchgh) → Continue
+
+6. Solve the puzzle verification
+
+7. Check your email and click the verification link
+
+8. When asked "How many people will be using GitHub?"
+   → Select "Just me" → Continue → click "Continue for free"
+
+9. You are now on your GitHub dashboard  ✅
+
+
+=======================================================
+STEP 4 — CREATE A NETLIFY ACCOUNT
+=======================================================
+
+1. Go to: https://netlify.com
+
+2. Click "Sign up"
+
+3. Click "Sign up with GitHub"
+   (This links Netlify to GitHub automatically)
+
+4. GitHub will ask you to authorize Netlify → Click "Authorize"
+
+5. You are now on your Netlify dashboard  ✅
+
+
+=======================================================
+STEP 5 — CREATE YOUR PROJECT FOLDER
+=======================================================
+
+1. Open File Explorer (Windows key + E)
+
+2. Navigate to your Desktop
+
+3. Right-click on an empty area → New → Folder
+
+4. Name it: church-attendance
+
+5. Open that folder
+
+6. Inside it, create two more folders:
+   - Right-click → New → Folder → name it: src
+   - Right-click → New → Folder → name it: database
+
+7. Your folder structure should look like:
+   Desktop\church-attendance\
+   ├── src\        (empty folder for now)
+   └── database\   (empty folder for now)
+
+
+=======================================================
+STEP 6 — COPY YOUR SOURCE CODE FILES
+=======================================================
+
+You have 8 files to place. Copy each one to the
+correct location:
+
+FILES THAT GO INSIDE THE src\ FOLDER:
+   • App.jsx      → church-attendance\src\App.jsx
+   • rbac.js      → church-attendance\src\rbac.js
+   • supabase.js  → church-attendance\src\supabase.js
+   • main.jsx     → church-attendance\src\main.jsx
+
+FILES THAT GO INSIDE THE database\ FOLDER:
+   • setup.sql    → church-attendance\database\setup.sql
+
+FILES THAT GO IN THE ROOT (church-attendance\) FOLDER:
+   • index.html   → church-attendance\index.html
+   • package.json → church-attendance\package.json
+   • vite.config.js → church-attendance\vite.config.js
+
+FINAL STRUCTURE:
+   Desktop\church-attendance\
+   ├── src\
+   │   ├── App.jsx
+   │   ├── rbac.js
+   │   ├── supabase.js
+   │   └── main.jsx
+   ├── database\
+   │   └── setup.sql
+   ├── index.html
+   ├── package.json
+   └── vite.config.js
+
+
+=======================================================
+STEP 7 — SET UP SUPABASE DATABASE
+=======================================================
+
+You already have a Supabase account. Now:
+
+1. Go to: https://supabase.com and sign in
+
+2. Click "New project"
+
+3. Fill in:
+   - Name: church-attendance
+   - Database Password: choose a strong password
+     (write it down somewhere safe)
+   - Region: West EU (Ireland) or the closest to you
+   - Click "Create new project"
+
+4. Wait about 1 minute for the project to be created.
+   You will see a loading screen — just wait.
+
+5. When ready, click "SQL Editor" in the LEFT sidebar
+
+6. Click "New query" (top left of the editor)
+
+7. Open your setup.sql file from Notepad:
+   - Go to: Desktop\church-attendance\database\
+   - Right-click setup.sql → Open with → Notepad
+   - Press Ctrl+A to select everything
+   - Press Ctrl+C to copy
+
+8. Click inside the Supabase SQL Editor text area
+   - Press Ctrl+A to select any existing text
+   - Press Ctrl+V to paste your setup.sql
+
+9. Click the green "Run" button (bottom right)
+
+10. You should see at the bottom:
+    "Setup complete! Login: admin / admin123"  ✅
+
+    If you see an error, check that you pasted
+    the entire file content and try again.
+
+
+=======================================================
+STEP 8 — GET YOUR SUPABASE CREDENTIALS
+=======================================================
+
+1. In your Supabase project, look at the LEFT sidebar
+
+2. Scroll to the very bottom and click the
+   ⚙️ Settings (gear icon)
+
+3. Click "API" in the settings menu
+
+4. You will see two important values:
+
+   PROJECT URL:
+   Looks like: https://abcdefghijk.supabase.co
+   → Copy this (click the copy icon next to it)
+
+   PROJECT API KEYS — anon public:
+   Looks like: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+   → Copy this (click the copy icon next to it)
+
+5. Open your supabase.js file:
+   - Go to: Desktop\church-attendance\src\
+   - Right-click supabase.js → Open with → Notepad
+
+6. Find these two lines at the top:
+   const SUPABASE_URL      = "https://bdrqgtwfgmmyqahjtnvh.supabase.co";
+   const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...";
+
+   NOTE: These lines already have YOUR credentials
+   from earlier in this project. If you are using
+   the same Supabase project, skip to Step 9.
+
+   If you created a NEW Supabase project, replace
+   the values inside the quotes with your new ones.
+
+7. Press Ctrl+S to save
+
+
+=======================================================
+STEP 9 — TEST THE APP LOCALLY ON YOUR COMPUTER
+=======================================================
+
+1. Open File Explorer and go to:
+   Desktop\church-attendance\
+
+2. Click the address bar at the TOP of File Explorer
+   (it shows the folder path like "Desktop > church-attendance")
+
+3. Type: cmd
+   Press Enter
+   (A black Command Prompt window opens INSIDE your folder)
+
+4. Type this and press Enter:
+   npm install
+
+   Wait for it to finish. You will see lots of text
+   scrolling. This takes 1-3 minutes.
+   When done you will see: "added X packages"  ✅
+
+5. Type this and press Enter:
+   npm run dev
+
+   You will see:
+   ➜ Local: http://localhost:5173/
+
+6. Open your browser and go to:
+   http://localhost:5173
+
+7. You should see the Church Attendance login screen.
+   Log in with:
+   Username: admin
+   Password: admin123
+
+   If you see the neon green dashboard → WORKING!  ✅
+
+8. Press Ctrl+C in the Command Prompt to stop the server
+   when you are done testing.
+
+
+=======================================================
+STEP 10 — CREATE A GITHUB REPOSITORY
+=======================================================
+
+1. Go to: https://github.com and sign in
+
+2. Click the "+" icon in the TOP RIGHT corner
+
+3. Click "New repository"
+
+4. Fill in:
+   - Repository name: church-attendance
+   - Description: Church attendance system (optional)
+   - Select: Public
+   - Do NOT tick any of the checkboxes
+     (no README, no .gitignore, no license)
+
+5. Click "Create repository"
+
+6. GitHub shows you a page with setup commands.
+   KEEP THIS PAGE OPEN — you need it in the next step.
+
+
+=======================================================
+STEP 11 — UPLOAD YOUR FILES TO GITHUB
+=======================================================
+
+1. Go back to your Command Prompt window
+   (the one inside your church-attendance folder)
+
+   If you closed it, open it again:
+   - Open File Explorer → go to Desktop\church-attendance\
+   - Click the address bar → type cmd → Enter
+
+2. Run these commands ONE BY ONE.
+   Type each line and press Enter. Wait for each one
+   to finish before typing the next:
+
+   git init
+
+   git add .
+
+   git commit -m "Church attendance system v5"
+
+   git branch -M main
+
+3. Now run this command (replace YOUR-USERNAME with
+   your actual GitHub username):
+
+   git remote add origin https://github.com/YOUR-USERNAME/church-attendance.git
+
+   Example: if your GitHub username is "gracechurchgh":
+   git remote add origin https://github.com/gracechurchgh/church-attendance.git
+
+4. Run the final push command:
+
+   git push -u origin main
+
+5. GitHub may ask for your login:
+   - Username: your GitHub username
+   - Password: use a Personal Access Token (NOT your GitHub password)
+
+   TO GET A TOKEN:
+   a. Go to github.com → click your profile picture (top right)
+   b. Click Settings
+   c. Scroll all the way down → click "Developer settings"
+   d. Click "Personal access tokens" → "Tokens (classic)"
+   e. Click "Generate new token" → "Generate new token (classic)"
+   f. Note: "Netlify deploy"
+   g. Set expiration: No expiration
+   h. Tick the "repo" checkbox (first one in the list)
+   i. Scroll down → click "Generate token"
+   j. COPY THE TOKEN NOW (you cannot see it again!)
+   k. Use this token as your password when Git asks
+
+6. Go back to your GitHub repository page and refresh.
+   You should see all your files listed there.  ✅
+
+
+=======================================================
+STEP 12 — DEPLOY TO NETLIFY
+=======================================================
+
+1. Go to: https://app.netlify.com
+
+2. Click "Add new site" button
+
+3. Click "Import an existing project"
+
+4. Click "GitHub"
+
+5. If asked to authorize → click "Authorize Netlify"
+
+6. You will see a list of your repositories.
+   Click "church-attendance"
+
+7. Netlify will auto-detect the settings.
+   Make sure they show:
+   - Branch to deploy: main
+   - Build command:    npm run build
+   - Publish directory: dist
+
+   If any of these are empty, type them in manually.
+
+8. Click "Deploy site"
+
+9. Netlify will show a progress screen.
+   Wait 2-3 minutes while it builds.
+   You will see the log scrolling.
+
+10. When done, you will see a green "Published" message
+    and a URL at the top like:
+    https://amazing-name-123456.netlify.app
+
+    THAT IS YOUR LIVE WEBSITE LINK!  ✅
+    Copy it and open it in your browser.
+
+11. Log in with: admin / admin123
+
+
+=======================================================
+STEP 13 — CHANGE YOUR WEBSITE NAME (Optional)
+=======================================================
+
+The default name is random like "amazing-name-123456".
+To get a nicer URL:
+
+1. In Netlify, click your site
+
+2. Click "Site settings"
+
+3. Click "Domain management" in the left menu
+
+4. Under "Custom domains", click "Options" next to
+   your netlify.app address
+
+5. Click "Edit site name"
+
+6. Type a new name like: grace-church-attendance
+
+7. Click Save
+
+Your new URL will be:
+https://grace-church-attendance.netlify.app
+
+
+=======================================================
+STEP 14 — FIRST THINGS TO DO ON YOUR LIVE SITE
+=======================================================
+
+1. Open your live URL
+
+2. Log in with admin / admin123
+
+3. Go to USER ACCOUNTS (in the sidebar)
+
+4. Click EDIT on the admin account
+
+5. Set a real password — something secure!
+
+6. Create accounts for your team:
+   - Click "CREATE USER" for each person
+   - Assign the right role:
+     • Super Admin  = full access (only you)
+     • Admin        = full data, no user management
+     • Pastor       = view only, no editing
+     • Data Entry   = can record attendance only
+     • Viewer       = read-only dashboards
+
+7. Share the website link with your team
+
+
+=======================================================
+STEP 15 — HOW TO UPDATE THE SITE IN THE FUTURE
+=======================================================
+
+Whenever you change any code file:
+
+1. Open Command Prompt in your church-attendance folder
+
+2. Run:
+   npm run build
+   git add .
+   git commit -m "Updated"
+   git push
+
+3. Netlify automatically detects the push and
+   redeploys within 1-2 minutes.
+
+Your live URL never changes.
+
+
+=======================================================
+QUICK REFERENCE — DEFAULT LOGIN
+=======================================================
+
+Website:  https://YOUR-SITE.netlify.app
+Username: admin
+Password: admin123   ← CHANGE THIS IMMEDIATELY
+
+=======================================================
+QUICK REFERENCE — ROLE PERMISSIONS
+=======================================================
+
+SUPER ADMIN  Full access + user management
+ADMIN        Full data access, no user management
+PASTOR       View reports, analytics, team
+DATA ENTRY   Record attendance + view records
+VIEWER       Dashboard + analytics + reports only
+
+=======================================================
+TROUBLESHOOTING
+=======================================================
+
+PROBLEM: "npm is not recognized"
+FIX: Restart your computer after installing Node.js,
+     then try again.
+
+PROBLEM: "git is not recognized"
+FIX: Restart your computer after installing Git,
+     then try again.
+
+PROBLEM: Login page shows but login fails
+FIX: Go to Supabase → SQL Editor → run setup.sql again
+
+PROBLEM: "Cannot connect to Supabase" error
+FIX: Check that supabase.js has the correct URL and
+     anon key from your Supabase project settings.
+
+PROBLEM: Netlify build fails
+FIX: Check the build log. Most common cause is a
+     missing file. Make sure all 8 files are present.
+
+PROBLEM: GitHub asks for password but rejects it
+FIX: Use a Personal Access Token (see Step 11 above),
+     NOT your GitHub account password.
+
+=======================================================
